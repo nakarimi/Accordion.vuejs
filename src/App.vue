@@ -1,24 +1,85 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
+import Accordion from "./components/Accordion.vue";
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
-  </header>
-
   <main>
-    <TheWelcome />
+    <div class="col-12">
+      <!-- 
+        Accordion Options:
+          accordionId: is used to specific the accordion element 
+            it should be unique if you have multiple accordion in one page.
+          data: Accordion with dynamic data, ex. { title: "", body: ""},
+          alwaysOpen: if ture, then all elemnts can be open at same time.
+          firstAriaExpanded: if ture, then the first item will be opeining on the page load.
+          type: Add flush to remove the default background-color, some borders, and some rounded corners to render accordions edge-to-edge with their parent container.
+        -->
+      <div class="form">
+        <label class="form-check-label p-2">
+          <input @change="updateAccordion()" type="checkbox" class="form-check-input" name="alwaysOpen" id="alwaysOpen" value="1" v-model="alwaysOpen">
+          Always Open
+        </label>
+        <label class="form-check-label p-2">
+          <input @change="updateAccordion()" type="checkbox" class="form-check-input" name="firstAriaExpanded" id="firstAriaExpanded" value="1" v-model="firstAriaExpanded">
+          First Element Expanded
+        </label>
+        <label class="form-check-label p-2">
+          <input @change="updateAccordion()" type="checkbox" class="form-check-input" name="accordionType" id="accordionType" value="flush" v-model="accordionType">
+          Flush
+        </label>
+      </div>
+      <Accordion
+        :key="accordionKey"
+        accordionId="ac_1"
+        :data="accordionData"
+        :alwaysOpen="alwaysOpen"
+        :firstAriaExpanded="firstAriaExpanded"
+        :type="accordionType ? 'flush' : 'default'"
+      />
+    </div>
   </main>
 </template>
-
+<script>
+export default {
+  data() {
+    return {
+      accordionKey: 0,
+      alwaysOpen: false,
+      accordionType: false,
+      firstAriaExpanded: false,
+      accordionData: [
+        {
+          title: "Accordion Item",
+          body: `<strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.`,
+        },
+        {
+          title: "Accordion Item",
+          body: `<strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.`,
+        },
+        {
+          title: "Accordion Item",
+          body: `<strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.`,
+        },
+        {
+          title: "Accordion Item",
+          body: `<strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.`,
+        },
+        {
+          title: "Accordion Item",
+          body: `<strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.`,
+        },
+      ],
+    };
+  },
+  methods: {
+    updateAccordion(){
+      this.accordionKey +=1;
+    }
+  },
+};
+</script>
 <style>
-@import './assets/base.css';
+@import "./assets/base.css";
 
 #app {
   max-width: 1280px;
