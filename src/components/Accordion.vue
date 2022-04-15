@@ -10,6 +10,8 @@ Accordion Options:
 <template>
 <div class="accordion-wrapper" :class="type">
   <div :class="{ 'accordion-flush': type === 'flush' }" class="accordion row p-0" :id="accordionId">
+  
+    <!-- Loop over list of accordion items -->
     <div class="accordion-item p-0" v-for="(item, index) in data" :key="index">
       <h2 class="accordion-header" id="headingOne">
         <button class="accordion-button" :class="{ collapsed: !(index == 0 && firstAriaExpanded == true) }" type="button" data-bs-toggle="collapse" :data-bs-target="'#' + accordionId + index" aria-expanded="false" :aria-controls="accordionId + index">
