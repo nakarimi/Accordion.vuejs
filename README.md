@@ -1,14 +1,7 @@
-# vue-starter
+# ENF Solar Test
 
-This template should help get you started developing with Vue 3 in Vite.
+ An Accordion component using vue.js. It is similar (appearance and behavior) to Bootstrap Accordion (https://getbootstrap.com/docs/5.1/components/accordion/).
 
-## Recommended IDE Setup
-
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.vscode-typescript-vue-plugin).
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
 
 ## Project Setup
 
